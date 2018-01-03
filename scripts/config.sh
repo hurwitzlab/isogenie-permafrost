@@ -9,4 +9,4 @@ export WORKER_DIR="$SCRIPT_DIR/workers"
 export ISO_DIR="/rsgrps/bhurwitz/hurwitzlab/data/isogenie/kbcrossen"
 
 #on irods the dir is:
-export IRODS_DIR="i:/iplant/home/kbcrossen/Rachel_incubations/trimmed"
+export IRODS_DIR="/iplant/home/kbcrossen/Rachel_incubations/trimmed"
