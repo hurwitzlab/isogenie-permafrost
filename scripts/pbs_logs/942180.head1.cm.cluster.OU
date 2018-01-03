@@ -1,0 +1,15 @@
+Started at Tue Jan  2 17:26:28 MST 2018
+Syncing single-end read files to irods / cyverse
+remote addresses: 206.207.252.32 ERROR: rsyncDirToCollUtil: mkColl error for /iplant/home/kbcrossen/Rachel_incubations/trimmed/16s-permafrost status = -818000 CAT_NO_ACCESS_PERMISSION
+remote addresses: 206.207.252.32 ERROR: rsyncDirToCollUtil: put /rsgrps/bhurwitz/hurwitzlab/data/isogenie/16s-permafrost failed. status = -818000 status = -818000 CAT_NO_ACCESS_PERMISSION
+remote addresses: 206.207.252.32 ERROR: rsyncUtil: rsync error for /iplant/home/kbcrossen/Rachel_incubations/trimmed status = -818000 CAT_NO_ACCESS_PERMISSION
+Done at Tue Jan  2 17:26:29 MST 2018
+
+You may want to consider changing your batch submission script as follows to speed up your job run next time:
+
+#PBS -l select=1:ncpus=1:mem=0b
+#PBS -l place=free:shared
+#PBS -l walltime=00:05:00
+
+Your group bhurwitz has been charged 00:00:02 for 1 cpus.
+You previously had 107997:59:00.  You now have 107997:58:58 remaining for the queue oc_standard

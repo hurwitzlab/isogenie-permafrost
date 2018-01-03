@@ -1,0 +1,12 @@
+Started at Tue Jan  2 17:34:22 MST 2018
+getting isogenie data
+Done at Tue Jan  2 17:34:22 MST 2018
+
+You may want to consider changing your batch submission script as follows to speed up your job run next time:
+
+#PBS -l select=1:ncpus=1:mem=0b
+#PBS -l place=free:shared
+#PBS -l walltime=00:05:00
+
+Your group bhurwitz has been charged 00:00:01 for 1 cpus.
+You previously had 107997:58:58.  You now have 107997:58:57 remaining for the queue oc_standard

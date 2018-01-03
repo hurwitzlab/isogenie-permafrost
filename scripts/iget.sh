@@ -2,7 +2,7 @@
 
 #PBS -W group_list=bhurwitz
 #PBS -q standard
-#PBS -l select=1:ncpus=1:mem=1gb
+#PBS -l select=1:ncpus=12:mem=1gb
 #PBS -l walltime=72:00:00
 #PBS -l cput=72:00:00
 #PBS -M scottdaniel@email.arizona.edu
@@ -29,10 +29,12 @@ if [ ! -d "$ISO_DIR" ]; then
     mkdir -p $ISO_DIR
 fi
 
+cd $ISO_DIR
+
 echo "Started at $(date)"
 
 echo "getting isogenie data"
 
-irsync -r $ISO_DIR $IRODS_DIR 
+iget -N 12 -r -X ./restartFile --lfrestart ./lfsrestartFILE $IRODS_DIR
 
 echo "Done at $(date)"

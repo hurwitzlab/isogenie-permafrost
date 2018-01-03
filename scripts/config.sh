@@ -6,4 +6,7 @@ export PRJ_DIR="/rsgrps/bhurwitz/scottdaniel/isogenie"
 export WORKER_DIR="$SCRIPT_DIR/workers"
 
 #main download / working directory
-export ISO_DIR="/rsgrps/bhurwitz/hurwitzlab/data/isogenie"
+export ISO_DIR="/rsgrps/bhurwitz/hurwitzlab/data/isogenie/kbcrossen"
+
+#on irods the dir is:
+export IRODS_DIR="i:/iplant/home/kbcrossen/Rachel_incubations/trimmed"
