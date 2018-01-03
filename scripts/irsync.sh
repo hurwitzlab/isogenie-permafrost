@@ -25,16 +25,14 @@ else
     exit 12345
 fi
 
-if [ ! -d "$DL_DIR" ]; then
-    mkdir -p $DL_DIR
+if [ ! -d "$ISO_DIR" ]; then
+    mkdir -p $ISO_DIR
 fi
-
-cd $DL_DIR
 
 echo "Started at $(date)"
 
 echo "Syncing single-end read files to irods / cyverse" 
 
-irsync -r /rsgrps/bhurwitz/hurwitzlab/data/controlled_access/PRJEB12449/single i:/iplant/home/scottdaniel/ebi/single
+irsync -r $ISO_DIR i:/iplant/home/kbcrossen/Rachel_incubations/trimmed
 
 echo "Done at $(date)"
