@@ -13,6 +13,9 @@
 #PBS -e pbs_logs/
 
 import os, sys, argparse, subprocess
+from plumbum import local
+
+find = local["find"]
 
 #should change the directory
 os.chdir(os.environ.get('PBS_O_WORKDIR'))
@@ -30,5 +33,9 @@ def import_config(sourcefile='./config.sh'):
 import_config()
 
 #testing
-print("Current environment is {:s}".format(os.environ))
+#print("Current environment is {:s}".format(str(os.environ)))
+
+list_of_fastq = find(os.environ.get('ISO_DIR'),'-iname','*.fastq')
+
+print("List of fastq files is {:s}".format(list_of_fastq))
 

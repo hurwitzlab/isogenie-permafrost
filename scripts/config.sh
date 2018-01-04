@@ -1,7 +1,7 @@
 #Config.sh contains commonly used directories
 #and functions if you need them
 #main project directory and also where singularity images bind /work to
-export BIND="/rsgrps/bhurwitz/scottdaniel/isogenie"
+export BIND="/rsgrps/bhurwitz/scottdaniel/isogenie_analysis"
 export PRJ_DIR=$BIND
 
 #scripts and such
