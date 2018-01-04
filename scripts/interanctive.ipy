@@ -1,0 +1,22 @@
+#!/usr/bin/env python
+
+import os, sys, argparse, subprocess
+
+#should change the directory
+#os.chdir(os.environ.get('PBS_O_WORKDIR'))
+
+#function to import variable from config.sh or other sourcefile
+def import_config(sourcefile='./config.sh'):
+    command = ['bash', '-c', 'source ' + sourcefile + ' && env']
+    proc = subprocess.Popen(command, stdout = subprocess.PIPE)
+    for line in proc.stdout:
+        (key, _, value) = line.partition("=")
+        os.environ[key] = value.rstrip('\n')
+    proc.communicate()
+
+#call the function
+import_config()
+
+#testing
+print("Current environment is {:s}".format(os.environ))
+
