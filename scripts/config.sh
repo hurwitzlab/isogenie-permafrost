@@ -40,7 +40,7 @@ export SING_OUT="/out"
 export SING_META="/metadata"
 export SING_PRJ="/scripts"
 
-#dna and rna reads (this is also where reports and trimmed reads go)
+#dna and reads (this is also where reports and trimmed reads go)
 export DNA_DIR="$PRJ_DIR/dna"
 
 #PATRIC bacterial genomes
