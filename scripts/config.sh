@@ -14,7 +14,7 @@ export ISO_DIR="/rsgrps/bhurwitz/hurwitzlab/data/isogenie/kbcrossen"
 #on irods the dir is:
 export IRODS_DIR="/iplant/home/kbcrossen/Rachel_incubations/trimmed"
 
-#TODO change these!
+#sample names
 export SAMPLE_NAMES="Day0_SPH Day0_Erio Day50_SPH Day50_Erio"
 
 # place to put temp stuff like lists of files
