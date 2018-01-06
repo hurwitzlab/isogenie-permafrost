@@ -12,9 +12,11 @@
 #PBS -o pbs_logs/
 #PBS -e pbs_logs/
 
-import os, sys, argparse, subprocess
-from plumbum import local
+import os
+import subprocess
 from pathlib import Path
+import shutil
+from plumbum import local
 
 find = local["find"]
 mkdir = local["mkdir"]
@@ -23,13 +25,13 @@ xargs = local["xargs"]
 
 #should change the directory
 os.chdir(os.environ.get('PBS_O_WORKDIR'))
-#
-##function to import variable from config.sh or other sourcefile
+
+#function to import variable from config.sh or other sourcefile
 def import_config(sourcefile='./config.sh'):
     command = ['bash', '-c', 'source ' + sourcefile + ' && env']
-    proc = subprocess.Popen(command, stdout = subprocess.PIPE)
-    for line in proc.stdout:
-        (key, _, value) = line.decode().partition("=")
+    proc = subprocess.Popen(command, stdout=subprocess.PIPE)
+    for aline in proc.stdout:
+        (key, _, value) = aline.decode().partition("=")
         os.environ[key] = value.rstrip('\n')
     proc.communicate()
 
@@ -39,7 +41,7 @@ import_config()
 #testing
 #print("Current environment is {:s}".format(str(os.environ)))
 
-list_of_fastq = find(os.environ.get('ISO_DIR'),'-iname','*.fastq')
+list_of_fastq =find(os.environ.get('ISO_DIR'), '-iname', '*.fastq')
 
 print("List of fastq files is {:s}".format(list_of_fastq))
 
@@ -154,4 +156,3 @@ for line in list_of_fastq.split('\n'):
         shutil.copy(p, os.path.join(os.environ.get('DNA_DIR'),'Day0_Erio_R2.fastq'))
 
 print("All done!")
-

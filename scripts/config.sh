@@ -83,7 +83,8 @@ export FILE_TYPE="q"
 #9606 is human
 #32630 are synthetic contructs (e.g. random illumina hexamer primer)
 #374840 common contaminant = Enterobacteria phage phiX174 sensu lato
-export EXCLUDE="9606,32630,374840"
+#1747 propionibacterium acnes = bacteria usually found on human skin
+export EXCLUDE="9606,32630,374840,1747"
 
 
 #

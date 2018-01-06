@@ -19,7 +19,7 @@ export CWD="$PWD"
 export STEP_SIZE=1
 
 PROG=`basename $0 ".sh"`
-STDOUT_DIR="$CWD/out/$PROG"
+STDOUT_DIR="$CWD/pbs_logs/$PROG"
 
 init_dir "$STDOUT_DIR" 
 

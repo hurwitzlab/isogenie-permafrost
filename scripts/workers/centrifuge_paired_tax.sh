@@ -3,14 +3,14 @@
 #PBS -W group_list=bhurwitz
 #PBS -q standard
 #PBS -l place=free:shared
-#PBS -l select=1:ncpus=6:mem=34gb:pcmem=6gb
-#PBS -l walltime=2:00:00
-#PBS -l cput=12:00:00
+#PBS -l select=1:ncpus=12:mem=68gb:pcmem=6gb
+#PBS -l walltime=12:00:00
+#PBS -l cput=144:00:00
 #PBS -M scottdaniel@email.arizona.edu
 #PBS -m bea
 
 #make sure this matches ncpus in the above header!
-export THREADS="--threads 6"
+export THREADS="--threads 12"
 #
 # runs centrifuge, brought to you by the good people who brought you bowtie2
 #
@@ -64,12 +64,15 @@ mkdir -p $CFUGE_DIR
 
 #RUN CENTRIFUGE ON ALL SEQUENCE FILES FOUND IN FIXED_DIR
 while read FASTA; do
-    BASE=$(basename $FASTA R1.fastq)
+    BASE=$(basename $FASTA _R1.fastq)
     R1=$SING_WD/$(basename $FASTA)
-    R2=$SING_WD/"$BASE"R2.fastq
+    R2=$SING_WD/"$BASE"_R2.fastq
+    U=$SING_WD/"$BASE"_unpaired.fastq
     OUT_DIR=$SING_WD/$(basename $CFUGE_DIR)
 
-    $cent -x $SING_CENT/$DB -1 $R1 -2 $R2 \
+    echo "Doing Sample $BASE"
+
+    $cent -x $SING_CENT/$DB -1 $R1 -2 $R2 -U $U\
         -S $OUT_DIR/"$BASE"centrifuge_hits.tsv \
         --report-file $OUT_DIR/"$BASE"centrifuge_report.tsv \
         -$FILE_TYPE \

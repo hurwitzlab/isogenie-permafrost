@@ -1,6 +1,8 @@
 #!/usr/bin/env python
+'''Docstring'''
+'script that takes a centrifuge report and just spits '
+'out taxon_id and names that have abundances greater than 0'
 
-#script that takes a centrifuge report and just spits out taxon_id and names that have abundances greater than 0 
 from __future__ import print_function #python3 style printing
 import sys
 import argparse
