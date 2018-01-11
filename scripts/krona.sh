@@ -13,7 +13,7 @@ export CWD="$PWD"
 echo Setting up log files...
 PROG=`basename $0 ".sh"`
 #Just going to put stdout and stderr together into stdout
-STDOUT_DIR="$CWD/out/$PROG"
+STDOUT_DIR="$CWD/pbs_logs/$PROG"
 
 init_dir "$STDOUT_DIR"
 

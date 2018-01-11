@@ -43,6 +43,9 @@ export SING_PRJ="/scripts"
 #dna and reads (this is also where reports and trimmed reads go)
 export DNA_DIR="$PRJ_DIR/dna"
 
+#krona charts
+export KRONA_OUT_DIR="$PRJ_DIR/krona_out"
+
 #PATRIC bacterial genomes
 export GENOME_DIR="$PRJ_DIR/genomes"
 
