@@ -103,3 +103,4 @@ ENV/
 pbs_logs/
 dna/
 lists_of_files/
+krona_out/

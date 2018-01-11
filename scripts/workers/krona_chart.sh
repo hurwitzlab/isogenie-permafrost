@@ -4,11 +4,20 @@
 
 #PBS -W group_list=bhurwitz
 #PBS -q standard
-#PBS -l select=1:ncpus=1:mem=5gb
+#PBS -l select=1:ncpus=6:mem=35gb
 #PBS -l walltime=8:00:00
 #PBS -l cput=8:00:00
 #PBS -M scottdaniel@email.arizona.edu
 #PBS -m bea
+
+CONFIG=$SCRIPT_DIR/config.sh
+
+if [[ -e $CONFIG ]]; then
+    source $CONFIG
+else
+    echo "errg no config"
+    exit 1
+fi
 
 echo "Time started: $(date)"
 
