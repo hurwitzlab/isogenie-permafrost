@@ -3,6 +3,12 @@
 
 * catSamples.py
 * centrifuge.sh
+{
+`source ./scripts/config.sh`
+`cd ./dna/cfuge/`
+`centrifuge-kreport -x $CENT_DB Day0_SPHcentrifuge_report.tsv Day0_Eriocentrifuge_report.tsv Day50_SPHcentrifuge_report.tsv Day50_Eriocentrifuge_report.tsv`
+then download the resultant files for the interactive pavian analysis
+}
 * interactive_pavian_analysis.R
 * get-genomes.sh
 * cat-and-bt2-build.sh
