@@ -8,4 +8,6 @@ setwd("~/isogenie-permafrost/dna/cfuge")
 # remotes::install_github("fbreitwieser/pavian")
 
 library(Rsamtools)
+library(pavian)
 
+pavian::runApp(port=5000)
