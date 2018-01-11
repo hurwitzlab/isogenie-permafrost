@@ -3,7 +3,7 @@
 
 * catSamples.py
 * centrifuge.sh
-* krona.sh
+* interactive_pavian_analysis.R
 * get-genomes.sh
 * cat-and-bt2-build.sh
 * align-with-bowtie2.sh
