@@ -6,7 +6,7 @@
 {
 `source ./scripts/config.sh`
 `cd ./dna/cfuge/`
-`centrifuge-kreport -x $CENT_DB Day0_SPHcentrifuge_report.tsv Day0_Eriocentrifuge_report.tsv Day50_SPHcentrifuge_report.tsv Day50_Eriocentrifuge_report.tsv`
+`centrifuge-kreport -x $CENT_DB Day0_SPHcentrifuge_hits.tsv Day0_Eriocentrifuge_hits.tsv Day50_SPHcentrifuge_hits.tsv Day50_Eriocentrifuge_hits.tsv`
 then download the resultant files for the interactive pavian analysis
 }
 * interactive_pavian_analysis.R
