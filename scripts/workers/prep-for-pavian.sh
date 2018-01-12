@@ -37,7 +37,7 @@ else
   exit 1
 fi
 
-cd $PRJ_DIR
+cd $CFUGE_DIR
 
 echo Host \"$(hostname)\"
 
@@ -65,11 +65,13 @@ mkdir -p $CFUGE_DIR
 #RUN CENTRIFUGE ON ALL SEQUENCE FILES FOUND IN FIXED_DIR
 while read HITS; do
 
-    SAMPLE=$(basename $HITS _hits.tsv)
+    FILENAME=$(basename $HITS)
+
+    SAMPLE=$(basename $HITS centrifuge_hits.tsv)
 
     echo "Doing Sample $SAMPLE"
 
-    $cent -x $SING_CENT/$DB $SING_WD/$HITS > "$SAMPLE"-pavian.tsv
+    $cent -x $SING_CENT/$DB $SING_WD/$FILENAME > "$SAMPLE"-pavian.tsv
 
 done < $TMP_FILES
 
