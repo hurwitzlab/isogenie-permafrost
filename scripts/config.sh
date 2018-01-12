@@ -1,7 +1,7 @@
 #Config.sh contains commonly used directories
 #and functions if you need them
 #main project directory and also where singularity images bind /work to
-export BIND="/rsgrps/bhurwitz/scottdaniel/isogenie_analysis"
+export BIND="/rsgrps/bhurwitz/scottdaniel/ebi_analysis"
 export PRJ_DIR=$BIND
 
 #scripts and such
@@ -9,13 +9,17 @@ export SCRIPT_DIR="$PRJ_DIR/scripts"
 export WORKER_DIR="$SCRIPT_DIR/workers"
 
 #main download / working directory
-export ISO_DIR="/rsgrps/bhurwitz/hurwitzlab/data/isogenie/kbcrossen"
+export DL_DIR="/rsgrps/bhurwitz/hurwitzlab/data/controlled_access/PRJEB12449"
+export DL_CANCER="$DL_DIR/cancer"
+export DL_CONTROL="$DL_DIR/control"
 
-#on irods the dir is:
-export IRODS_DIR="/iplant/home/kbcrossen/Rachel_incubations/trimmed"
+#mapping for sample metadata
+export METADATA="$DL_DIR/metadata_to_readFileNames.txt"
+export CANCER_LIST="$(cut -f 8 $DL_DIR/just_cancer_metadata.txt)"
+export CONTROL_LIST="$(cut -f 8 $DL_DIR/just_control_metadata.txt)"
 
 #sample names
-export SAMPLE_NAMES=(Day0_SPH Day0_Erio Day50_SPH Day50_Erio)
+export SAMPLE_NAMES=(cancer control)
 
 # place to put temp stuff like lists of files
 export MY_TEMP_DIR="$PRJ_DIR/lists_of_files"
