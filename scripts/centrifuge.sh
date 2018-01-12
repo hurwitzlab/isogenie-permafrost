@@ -27,7 +27,7 @@ cd $PRJ_DIR
 
 export DNALIST="$MY_TEMP_DIR/fna_list"
 
-find $DNA_DIR -iname "*R1.fastq" > $DNALIST
+find $DL_DIR -iname "all*_1.fq.gz" > $DNALIST
 
 export TODO="$MY_TEMP_DIR/files_todo"
 
@@ -47,7 +47,7 @@ cat $DNALIST >> $TODO
 
 NUM_FILES=$(lc $TODO)
 
-echo Found \"$NUM_FILES\" files in \"$DNA_DIR\" to work on
+echo Found \"$NUM_FILES\" files in \"$DL_DIR\" to work on
 
 JOB=$(qsub -J 1-$NUM_FILES:$STEP_SIZE -V -N centrifuge -j oe -o "$STDOUT_DIR" $WORKER_DIR/centrifuge_paired_tax.sh)
 

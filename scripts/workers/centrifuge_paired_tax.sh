@@ -57,24 +57,24 @@ else
 fi
 
 export cent="singularity exec \
-    -B $DNA_DIR:$SING_WD,$(dirname $CENT_DB):$SING_CENT \
+    -B $DL_DIR:$SING_WD,$(dirname $CENT_DB):$SING_CENT \
     $SING_IMG/centrifuge.img centrifuge" 
 
 mkdir -p $CFUGE_DIR
 
 #RUN CENTRIFUGE ON ALL SEQUENCE FILES FOUND IN FIXED_DIR
 while read FASTA; do
-    BASE=$(basename $FASTA _R1.fastq)
+    BASE=$(basename $FASTA _1.fq.gz)
     R1=$SING_WD/$(basename $FASTA)
-    R2=$SING_WD/"$BASE"_R2.fastq
-    U=$SING_WD/"$BASE"_unpaired.fastq
+    R2=$SING_WD/"$BASE"_2.fq.gz
+    U=$SING_WD/"$BASE"_unpaired.fq.gz
     OUT_DIR=$SING_WD/$(basename $CFUGE_DIR)
 
     echo "Doing Sample $BASE"
 
     $cent -x $SING_CENT/$DB -1 $R1 -2 $R2 -U $U\
-        -S $OUT_DIR/"$BASE"centrifuge_hits.tsv \
-        --report-file $OUT_DIR/"$BASE"centrifuge_report.tsv \
+        -S $OUT_DIR/"$BASE"_centrifuge_hits.tsv \
+        --report-file $OUT_DIR/"$BASE"_centrifuge_report.tsv \
         -$FILE_TYPE \
         --exclude-taxids $EXCLUDE \
         $THREADS
