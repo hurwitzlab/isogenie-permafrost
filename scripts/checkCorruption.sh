@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #
-# Script to run centrifuge 
+# Script to run gunzip -t [file] to test for corrupt files
+# this script splits them up into batches of 10
 #
 
 set -u
@@ -14,10 +15,8 @@ else
     exit 12345
 fi
 
-mkdir -p $MY_TEMP_DIR
-mkdir -p $CFUGE_DIR
 export CWD="$PWD"
-export STEP_SIZE=1
+export STEP_SIZE=10
 
 PROG=`basename $0 ".sh"`
 STDOUT_DIR="$CWD/pbs_logs/$PROG"
@@ -26,9 +25,10 @@ init_dir "$STDOUT_DIR"
 
 cd $PRJ_DIR
 
-export DNALIST="$MY_TEMP_DIR/fna_list"
+export CHECKLIST="$MY_TEMP_DIR/fna_list"
 
-find $DL_DIR -iname "all*_1.fq.gz" > $DNALIST
+find $DL_CANCER -iname "*.fastq.gz" > $CHECKLIST
+find $DL_CONTROL -iname "*.fastq.gz" >> $CHECKLIST
 
 export TODO="$MY_TEMP_DIR/files_todo"
 
@@ -44,23 +44,20 @@ fi
 #
 #done
 
-cat $DNALIST >> $TODO
+cat $CHECKLIST >> $TODO
 
 NUM_FILES=$(lc $TODO)
 
 echo Found \"$NUM_FILES\" files in \"$DL_DIR\" to work on
 
-JOB=$(qsub -J 1-$NUM_FILES:$STEP_SIZE -V -N centrifuge -j oe -o "$STDOUT_DIR" $WORKER_DIR/centrifuge_paired_tax.sh)
+JOB=$(qsub -J 1-$NUM_FILES:$STEP_SIZE -V -N checkCorruption -j oe -o "$STDOUT_DIR" $WORKER_DIR/runGunzipTest.sh)
 
 if [ $? -eq 0 ]; then
   echo -e "Submitted job \"$JOB\" for you in steps of \"$STEP_SIZE.\"
-  There's no such thing as bad language. I don't believe that any more. That's
-  ridiculous. They call it a "debasing of the language?" No! We are adults.
-  These are the words that WE use, to express frustration, rage, anger―in
-  order that we don't pick up a tire iron and beat the shit out of someone.
-          ― Lewis Black"
+Q: How many Oregonians does it take to screw in a light bulb?
+A: Three. One to screw in the lightbulb and two to fend off all those
+   Californians trying to share the experience."
 else
   echo -e "\nError submitting job\n$JOB\n"
 fi
-echo done $(date)
 

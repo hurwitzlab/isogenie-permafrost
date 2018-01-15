@@ -12,6 +12,7 @@ export WORKER_DIR="$SCRIPT_DIR/workers"
 export DL_DIR="/rsgrps/bhurwitz/hurwitzlab/data/controlled_access/PRJEB12449"
 export DL_CANCER="$DL_DIR/cancer"
 export DL_CONTROL="$DL_DIR/control"
+export CORRPT_DIR="$DL_DIR/corrupted"
 
 #mapping for sample metadata
 export METADATA="$DL_DIR/metadata_to_readFileNames.txt"
@@ -45,7 +46,9 @@ export SING_META="/metadata"
 export SING_PRJ="/scripts"
 
 #dna and reads (this is also where reports and trimmed reads go)
-export DNA_DIR="$PRJ_DIR/dna"
+export DNA_DIR="$DL_DIR"
+#centrifuge directory
+export CFUGE_DIR="$DL_DIR/cfuge"
 
 #krona charts
 export KRONA_OUT_DIR="$PRJ_DIR/krona_out"
@@ -66,9 +69,6 @@ export ALN_DIR="$PRJ_DIR/alignments"
 
 ###CENTRIFUGE STUFF####
 #######################
-
-#centrifuge directory
-export CFUGE_DIR="$DNA_DIR/cfuge"
 
 #Single or Paired End Reads? (single || paired)
 #IMPORTANT: For paired end files see README.md for additional information

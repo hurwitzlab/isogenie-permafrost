@@ -1,7 +1,7 @@
 # Order of operations
 ## Can pre-pend script names to 00, 01, etc. once finalized
 
-* catSamples.py
+* checkCorruption.sh
 * centrifuge.sh
 * generate-pavian-report.sh
 * interactive_pavian_analysis.R
