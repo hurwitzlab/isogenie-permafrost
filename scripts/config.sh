@@ -14,6 +14,11 @@ export DL_CANCER="$DL_DIR/cancer"
 export DL_CONTROL="$DL_DIR/control"
 export CORRPT_DIR="$DL_DIR/corrupted"
 
+#after qc / trimming
+export TRIMMED_DIR="$DL_DIR/trimmed"
+export TRMD_CANC="$TRIMMED_DIR/cancer"
+export TRMD_CONT="$TRIMMED_DIR/control"
+
 #mapping for sample metadata
 export METADATA="$DL_DIR/metadata_to_readFileNames.txt"
 export CANCER_LIST="$(cut -f 8 $DL_DIR/just_cancer_metadata.txt)"

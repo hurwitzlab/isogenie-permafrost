@@ -18,8 +18,7 @@ cd $PRJ_DIR
 
 export DNALIST="dna_fastq_file_list"
 
-find $DL_CANCER -iname "_1.fastq.gz" > $DNALIST
-find $DL
+find $DL_CANCER $DL_CONTROL -iname "_1.fastq.gz" > $DNALIST
 
 export TODO="files_todo"
 
@@ -30,7 +29,7 @@ fi
 echo "Checking if trimming has already been done for dna"
 while read FASTQ; do
     
-    if [ ! -e "$DNA_DIR/$(basename $FASTQ .fastq)_val_1.fq" ]; then
+    if [ ! -e "$TRIMMED_DIR/$(basename $FASTQ .fastq)_trimmed.fq.gz" ]; then
         echo $FASTQ >> $TODO
     fi
 
