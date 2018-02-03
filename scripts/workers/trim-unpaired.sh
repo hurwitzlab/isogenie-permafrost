@@ -56,11 +56,7 @@ export trim_galore="singularity exec \
 echo "Running trim_galore on cancer files, if any"
 for file in $(cat $TMP_FILES | grep "cancer"); do
     OUT_DIR=$SING_WD/trimmed/cancer
-    R1=$(basename $file)
-    R2=$(basename $file _1.fastq.gz)_2.fastq.gz
-    U=$(basename $file _1.fastq.gz)_unpaired.fastq.gz
-    $trim_galore --paired -o $OUT_DIR \
-        $SING_WD/cancer/$R1 $SING_WD/cancer/$R2
+    U=$(basename $file)
     $trim_galore -o $OUT_DIR \
         $SING_WD/cancer/$U
 done
@@ -68,11 +64,7 @@ done
 echo "Running trim_galore on control files, if any"
 for file in $(cat $TMP_FILES | grep "control"); do
     OUT_DIR=$SING_WD/trimmed/control
-    R1=$(basename $file)
-    R2=$(basename $file _1.fastq.gz)_2.fastq.gz
-    U=$(basename $file _1.fastq.gz)_unpaired.fastq.gz
-    $trim_galore --paired -o $OUT_DIR \
-        $SING_WD/control/$R1 $SING_WD/cancer/$R2
+    U=$(basename $file)
     $trim_galore -o $OUT_DIR \
         $SING_WD/control/$U
 done
