@@ -7,7 +7,7 @@ set -u
 source ./config.sh
 export CWD="$PWD"
 #batches of N
-export STEP_SIZE=1
+export STEP_SIZE=10
 
 PROG=`basename $0 ".sh"`
 STDOUT_DIR="$CWD/out/$PROG"
@@ -29,7 +29,7 @@ fi
 echo "Checking if trimming has already been done for dna"
 while read FASTQ; do
 
-    if [[ $FASTQ =~ "cancer" ]]
+    if [[ $FASTQ =~ "cancer" ]]; then
     
         if [ ! -e "$TRMD_CANC/$(basename $FASTQ _1.fastq.gz)_trimmed.fq.gz" ]; then
             echo $FASTQ >> $TODO
@@ -40,6 +40,8 @@ while read FASTQ; do
         if [ ! -e "$TRMD_CONT/$(basename $FASTQ _1.fastq.gz)_trimmed.fq.gz" ]; then
             echo $FASTQ >> $TODO
         fi
+
+    fi
 
 done < $DNALIST
 
