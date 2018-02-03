@@ -2,6 +2,8 @@
 ## Can pre-pend script names to 00, 01, etc. once finalized
 
 * checkCorruption.sh
+* trimGalore-launch.sh
+* bbRepair-launch.sh
 * centrifuge.sh
 * generate-pavian-report.sh
 * interactive_pavian_analysis.R
