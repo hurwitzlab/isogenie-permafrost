@@ -10,21 +10,27 @@ export CWD="$PWD"
 export STEP_SIZE=10
 
 PROG=`basename $0 ".sh"`
-STDOUT_DIR="$CWD/out/$PROG"
+STDOUT_DIR="$CWD/pbs_logs/$PROG"
 
 init_dir "$STDOUT_DIR" 
 
 cd $PRJ_DIR
 
-export DNALIST="dna_fastq_file_list"
+export DNALIST="$MY_TEMP_DIR/dna_fastq_file_list"
 
 find $DL_CANCER $DL_CONTROL -iname "*_1.fastq.gz" > $DNALIST
 
-export TODO="files_todo"
+mkdir -p $TRIMMED_DIR
+mkdir -p $TRMD_CANC
+mkdir -p $TRMD_CONT
+
+export TODO="$MY_TEMP_DIR/files_todo"
 
 if [ -e $TODO ]; then
     rm $TODO
 fi
+
+#TODO: something aint right with the paired end stuff, it cant find certain files, check logs (unpaired went fine)
 
 echo "Checking if trimming has already been done for dna"
 while read FASTQ; do

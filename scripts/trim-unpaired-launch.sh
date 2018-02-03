@@ -10,9 +10,13 @@ export CWD="$PWD"
 export STEP_SIZE=10
 
 PROG=`basename $0 ".sh"`
-STDOUT_DIR="$CWD/out/$PROG"
+STDOUT_DIR="$CWD/pbs_logs/$PROG"
 
 init_dir "$STDOUT_DIR" 
+
+mkdir -p $TRIMMED_DIR
+mkdir -p $TRMD_CANC
+mkdir -p $TRMD_CONT
 
 cd $PRJ_DIR
 

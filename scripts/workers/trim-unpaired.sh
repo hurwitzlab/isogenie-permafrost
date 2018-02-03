@@ -21,14 +21,16 @@ module load singularity
 unset module
 set -u
 
-COMMON="$WORKER_DIR/common.sh"
+CONFIG="$SCRIPT_DIR/config.sh"
 
-if [ -e $COMMON ]; then
-  . "$COMMON"
+if [ -e $CONFIG ]; then
+  . "$CONFIG"
 else
-  echo Missing common \"$COMMON\"
+  echo Missing config \"$CONFIG\"
   exit 1
 fi
+
+
 
 cd $PRJ_DIR
 
